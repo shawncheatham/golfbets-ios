@@ -7,15 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0506057BDD4632E63D43F28E /* GamePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8966AEB9CF30914AB1A7AF10 /* GamePickerView.swift */; };
+		05ECB1DF90BCD1E3741382AA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DBC23884AC2390655A0683 /* Player.swift */; };
+		27DECA09339D1F55FC7C807C /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC80DE00AFCCD7F60B6281F /* GameType.swift */; };
+		316E7D2A734418A2910FC13E /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9968BF05BB371C6593E1B76 /* Round.swift */; };
 		5A217A97B8B2E4486597A7ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A7CD024317540422FD565B /* ContentView.swift */; };
+		9690087D380E6B54E8190071 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A230AFCE2EB2313453251F /* AppStore.swift */; };
 		A5DE6E64DFFFF7ADA722F7E1 /* GolfBetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD005F00884B63BBD70981 /* GolfBetsApp.swift */; };
+		EA7B4BE384FAD279FDBDB908 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C2EF7C6C9E556BE5D5BB0 /* SetupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		26ACA0C6894B00A02F350C40 /* GolfBets.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = GolfBets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42DBC23884AC2390655A0683 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		50A230AFCE2EB2313453251F /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		6BC80DE00AFCCD7F60B6281F /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
+		8966AEB9CF30914AB1A7AF10 /* GamePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePickerView.swift; sourceTree = "<group>"; };
 		96885E2697D108B21D58FCB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B9968BF05BB371C6593E1B76 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		E8A7CD024317540422FD565B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F1DD005F00884B63BBD70981 /* GolfBetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfBetsApp.swift; sourceTree = "<group>"; };
+		F56C2EF7C6C9E556BE5D5BB0 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -35,14 +47,44 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8220360077BDC1A7685C62B2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8966AEB9CF30914AB1A7AF10 /* GamePickerView.swift */,
+				F56C2EF7C6C9E556BE5D5BB0 /* SetupView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		C3491C0DB3F4338D76BD2BE2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				E8A7CD024317540422FD565B /* ContentView.swift */,
 				F1DD005F00884B63BBD70981 /* GolfBetsApp.swift */,
 				96885E2697D108B21D58FCB1 /* Info.plist */,
+				FD98FA4D18E372F4D60B53E8 /* Domain */,
+				F58CD91558F084D3840C664E /* Store */,
+				8220360077BDC1A7685C62B2 /* UI */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		F58CD91558F084D3840C664E /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				50A230AFCE2EB2313453251F /* AppStore.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		FD98FA4D18E372F4D60B53E8 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				6BC80DE00AFCCD7F60B6281F /* GameType.swift */,
+				42DBC23884AC2390655A0683 /* Player.swift */,
+				B9968BF05BB371C6593E1B76 /* Round.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,8 +140,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9690087D380E6B54E8190071 /* AppStore.swift in Sources */,
 				5A217A97B8B2E4486597A7ED /* ContentView.swift in Sources */,
+				0506057BDD4632E63D43F28E /* GamePickerView.swift in Sources */,
+				27DECA09339D1F55FC7C807C /* GameType.swift in Sources */,
 				A5DE6E64DFFFF7ADA722F7E1 /* GolfBetsApp.swift in Sources */,
+				05ECB1DF90BCD1E3741382AA /* Player.swift in Sources */,
+				316E7D2A734418A2910FC13E /* Round.swift in Sources */,
+				EA7B4BE384FAD279FDBDB908 /* SetupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
