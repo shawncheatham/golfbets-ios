@@ -6,12 +6,31 @@ struct SkinsHoleEntryView: View {
     @State private var holeIndex: Int = 0
 
     private var holeNumber: Int { store.round.skinsHoles[safe: holeIndex]?.number ?? 1 }
+    private var computed: [SkinsHoleComputed] { SkinsRules.compute(holes: store.round.skinsHoles) }
+    private var carryIn: Int { computed[safe: holeIndex]?.carryIn ?? 0 }
+    private var skinsPaid: Int { computed[safe: holeIndex]?.skinsPaid ?? 0 }
 
     var body: some View {
         VStack(spacing: 16) {
             header
 
             Form {
+                Section("This hole") {
+                    if carryIn > 0 {
+                        Text("Carry in: \(carryIn) skin\(carryIn == 1 ? "" : "s")")
+                    } else {
+                        Text("Carry in: none")
+                            .foregroundStyle(.secondary)
+                    }
+
+                    if skinsPaid > 0 {
+                        Text("Worth: \(skinsPaid) skin\(skinsPaid == 1 ? "" : "s")")
+                    } else {
+                        Text("Worth: push")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
                 Section("Winner") {
                     Picker("Winner", selection: winnerBinding) {
                         Text("Push / carry").tag(UUID?.none)

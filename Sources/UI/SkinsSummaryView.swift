@@ -12,10 +12,16 @@ struct SkinsSummaryView: View {
                 } else {
                     ForEach(store.round.players) { p in
                         let count = skinsWon(for: p.id)
+                        let total = totalCents(for: p.id)
                         HStack {
-                            Text(p.name)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(p.name)
+                                Text("\(count) skin\(count == 1 ? "" : "s")")
+                                    .font(.footnote)
+                                    .foregroundStyle(.secondary)
+                            }
                             Spacer()
-                            Text("\(count)")
+                            Text(centsToDollars(total))
                                 .font(.headline)
                         }
                         .accessibilityLabel("\(p.name), \(count) skins")
@@ -24,12 +30,31 @@ struct SkinsSummaryView: View {
             }
 
             Section("Holes") {
-                ForEach(store.round.skinsHoles) { h in
-                    HStack {
-                        Text("Hole \(h.number)")
+                let computed = SkinsRules.compute(holes: store.round.skinsHoles)
+                ForEach(computed) { c in
+                    HStack(alignment: .firstTextBaseline) {
+                        Text("Hole \(c.hole.number)")
+
                         Spacer()
-                        Text(label(for: h))
-                            .foregroundStyle(h.winnerPlayerId == nil ? .secondary : .primary)
+
+                        VStack(alignment: .trailing, spacing: 2) {
+                            Text(label(for: c.hole))
+                                .foregroundStyle(c.hole.winnerPlayerId == nil ? .secondary : .primary)
+
+                            if c.skinsPaid > 0 {
+                                Text("Worth \(c.skinsPaid)")
+                                    .font(.footnote)
+                                    .foregroundStyle(.secondary)
+                            } else if c.carryIn > 0 {
+                                Text("Carry in \(c.carryIn)")
+                                    .font(.footnote)
+                                    .foregroundStyle(.secondary)
+                            } else {
+                                Text("Push")
+                                    .font(.footnote)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
                     }
                 }
             }
@@ -39,9 +64,20 @@ struct SkinsSummaryView: View {
     }
 
     private func skinsWon(for playerId: UUID) -> Int {
-        store.round.skinsHoles.reduce(0) { partial, h in
-            partial + (h.winnerPlayerId == playerId ? 1 : 0)
+        let computed = SkinsRules.compute(holes: store.round.skinsHoles)
+        return computed.reduce(0) { partial, c in
+            partial + (c.hole.winnerPlayerId == playerId ? c.skinsPaid : 0)
         }
+    }
+
+    private func totalCents(for playerId: UUID) -> Int {
+        let stake = store.round.stakeCents ?? 0
+        return skinsWon(for: playerId) * stake
+    }
+
+    private func centsToDollars(_ cents: Int) -> String {
+        let dollars = Double(cents) / 100.0
+        return dollars.formatted(.currency(code: "USD"))
     }
 
     private func label(for hole: SkinsHole) -> String {
