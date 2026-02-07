@@ -20,6 +20,8 @@
 		A5DE6E64DFFFF7ADA722F7E1 /* GolfBetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD005F00884B63BBD70981 /* GolfBetsApp.swift */; };
 		EA7B4BE384FAD279FDBDB908 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C2EF7C6C9E556BE5D5BB0 /* SetupView.swift */; };
 		7F1C3A2B4D5E6F708192A3B4 /* RoundHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A3B4C5 /* RoundHomeView.swift */; };
+		AB12CD34EF5678901234ABCD /* Settlement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23DE45F6789012345BCDEF /* Settlement.swift */; };
+		CD34EF5678901234ABCD1234 /* SettlementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45F6789012345BCDEF4567 /* SettlementView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		F1DD005F00884B63BBD70981 /* GolfBetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfBetsApp.swift; sourceTree = "<group>"; };
 		F56C2EF7C6C9E556BE5D5BB0 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F708192A3B4C5 /* RoundHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundHomeView.swift; sourceTree = "<group>"; };
+		BC23DE45F6789012345BCDEF /* Settlement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settlement.swift; sourceTree = "<group>"; };
+		DE45F6789012345BCDEF4567 /* SettlementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettlementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -65,6 +69,7 @@
 				1A2B3C4D5E6F708192A3B4C5 /* RoundHomeView.swift */,
 				B2C3D4E5F60718293A4B5C6D /* SkinsHoleEntryView.swift */,
 				D4E5F60718293A4B5C6D7E8F /* SkinsSummaryView.swift */,
+				DE45F6789012345BCDEF4567 /* SettlementView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 				B9968BF05BB371C6593E1B76 /* Round.swift */,
 				9D1E2F3A4B5C6D7E8F901234 /* SkinsHole.swift */,
 				E5F60718293A4B5C6D7E8F90 /* SkinsCarry.swift */,
+				BC23DE45F6789012345BCDEF /* Settlement.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -167,7 +173,9 @@
 				EA7B4BE384FAD279FDBDB908 /* SetupView.swift in Sources */,
 				7F1C3A2B4D5E6F708192A3B4 /* RoundHomeView.swift in Sources */,
 				A1B2C3D4E5F60718293A4B5C /* SkinsHoleEntryView.swift in Sources */,
-				C3D4E5F60718293A4B5C6D7E /* SkinsSummaryView.swift in Sources */, 
+				C3D4E5F60718293A4B5C6D7E /* SkinsSummaryView.swift in Sources */,
+				AB12CD34EF5678901234ABCD /* Settlement.swift in Sources */,
+				CD34EF5678901234ABCD1234 /* SettlementView.swift in Sources */, 
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

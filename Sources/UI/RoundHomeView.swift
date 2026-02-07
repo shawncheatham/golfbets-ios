@@ -41,7 +41,7 @@ struct RoundHomeView: View {
                 }
 
                 NavigationLink {
-                    SettlementPlaceholderView()
+                    SettlementView()
                 } label: {
                     Label("Settle up", systemImage: "dollarsign.circle")
                 }
@@ -65,18 +65,6 @@ struct RoundHomeView: View {
             .navigationTitle("Holes")
             .navigationBarTitleDisplayMode(.inline)
         }
-    }
-}
-
-private struct SettlementPlaceholderView: View {
-    var body: some View {
-        ContentUnavailableView(
-            "Settlement coming next",
-            systemImage: "chart.bar",
-            description: Text("We’ll compute payouts and show a clean pay-who list.")
-        )
-        .navigationTitle("Settle")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
