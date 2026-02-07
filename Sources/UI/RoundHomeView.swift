@@ -35,7 +35,7 @@ struct RoundHomeView: View {
 
             Section("Next") {
                 NavigationLink {
-                    ScorecardPlaceholderView()
+                    holesDestination
                 } label: {
                     Label("Enter holes", systemImage: "list.number")
                 }
@@ -50,17 +50,21 @@ struct RoundHomeView: View {
         .navigationTitle("Round")
         .navigationBarTitleDisplayMode(.inline)
     }
-}
 
-private struct ScorecardPlaceholderView: View {
-    var body: some View {
-        ContentUnavailableView(
-            "Hole entry coming next",
-            systemImage: "flag",
-            description: Text("We’ll mirror the PWA’s quick hole flow here.")
-        )
-        .navigationTitle("Holes")
-        .navigationBarTitleDisplayMode(.inline)
+    @ViewBuilder
+    private var holesDestination: some View {
+        switch store.round.game {
+        case .skins:
+            SkinsHoleEntryView()
+        case .wolf, .bbb:
+            ContentUnavailableView(
+                "Hole entry coming next",
+                systemImage: "flag",
+                description: Text("Skins is first; we’ll bring this over next.")
+            )
+            .navigationTitle("Holes")
+            .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 

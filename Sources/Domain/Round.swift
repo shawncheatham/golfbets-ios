@@ -12,6 +12,7 @@ struct Round: Codable, Identifiable, Equatable {
 
     // Skins
     var stakeCents: Int?
+    var skinsHoles: [SkinsHole]
 
     // Wolf
     var wolfPointsPerHole: Int?
@@ -29,6 +30,7 @@ struct Round: Codable, Identifiable, Equatable {
         players: [Player],
         locked: Bool = false,
         stakeCents: Int? = nil,
+        skinsHoles: [SkinsHole] = SkinsHole.make18(),
         wolfPointsPerHole: Int? = nil,
         wolfLoneMultiplier: Int? = nil,
         wolfDollarsPerPointCents: Int? = nil,
@@ -41,6 +43,7 @@ struct Round: Codable, Identifiable, Equatable {
         self.players = players
         self.locked = locked
         self.stakeCents = stakeCents
+        self.skinsHoles = skinsHoles
         self.wolfPointsPerHole = wolfPointsPerHole
         self.wolfLoneMultiplier = wolfLoneMultiplier
         self.wolfDollarsPerPointCents = wolfDollarsPerPointCents
@@ -50,18 +53,31 @@ struct Round: Codable, Identifiable, Equatable {
     static func makeDefault(game: GameType) -> Round {
         switch game {
         case .skins:
-            return Round(game: .skins, name: "Saturday Skins", players: [Player(name: "Player 1"), Player(name: "Player 2")], stakeCents: 500)
+            return Round(
+                game: .skins,
+                name: "Saturday Skins",
+                players: [Player(name: "Player 1"), Player(name: "Player 2")],
+                stakeCents: 500,
+                skinsHoles: SkinsHole.make18()
+            )
         case .wolf:
             return Round(
                 game: .wolf,
                 name: "Wolf",
                 players: [Player(name: "Player 1"), Player(name: "Player 2"), Player(name: "Player 3"), Player(name: "Player 4")],
+                skinsHoles: SkinsHole.make18(),
                 wolfPointsPerHole: 1,
                 wolfLoneMultiplier: 2,
                 wolfDollarsPerPointCents: 0
             )
         case .bbb:
-            return Round(game: .bbb, name: "BBB", players: [Player(name: "Player 1"), Player(name: "Player 2")], bbbDollarsPerPointCents: 0)
+            return Round(
+                game: .bbb,
+                name: "BBB",
+                players: [Player(name: "Player 1"), Player(name: "Player 2")],
+                skinsHoles: SkinsHole.make18(),
+                bbbDollarsPerPointCents: 0
+            )
         }
     }
 }
