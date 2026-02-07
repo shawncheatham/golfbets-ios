@@ -12,4 +12,9 @@ final class AppStore: ObservableObject {
     func startNew(game: GameType) {
         round = Round.makeDefault(game: game)
     }
+
+    func start(round: Round) {
+        self.round = round
+    }
 }
+
