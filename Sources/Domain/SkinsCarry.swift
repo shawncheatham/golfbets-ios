@@ -10,14 +10,21 @@ struct SkinsHoleComputed: Identifiable, Equatable {
     let skinsPaid: Int
 }
 
+struct SkinsRoundComputed: Equatable {
+    let holes: [SkinsHoleComputed]
+    /// Skins that were pushed and never paid by the end of hole 18.
+    let unpaidSkinsInPot: Int
+}
+
 enum SkinsRules {
     /// Computes carry and payout per hole.
     /// - carry starts at 0
     /// - push => skinsPaid = 0, carry increments
     /// - winner => skinsPaid = carry + 1, carry resets to 0
-    static func compute(holes: [SkinsHole]) -> [SkinsHoleComputed] {
+    /// - any carry remaining after final hole becomes unpaid pot
+    static func computeRound(holes: [SkinsHole]) -> SkinsRoundComputed {
         var carry = 0
-        return holes.map { h in
+        let computedHoles: [SkinsHoleComputed] = holes.map { h in
             let carryIn = carry
             if h.winnerPlayerId == nil {
                 carry += 1
@@ -28,5 +35,11 @@ enum SkinsRules {
                 return SkinsHoleComputed(hole: h, carryIn: carryIn, skinsPaid: paid)
             }
         }
+
+        return SkinsRoundComputed(holes: computedHoles, unpaidSkinsInPot: carry)
+    }
+
+    static func compute(holes: [SkinsHole]) -> [SkinsHoleComputed] {
+        computeRound(holes: holes).holes
     }
 }

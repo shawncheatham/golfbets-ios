@@ -29,8 +29,26 @@ struct SkinsSummaryView: View {
                 }
             }
 
+            Section("Pot") {
+                let round = SkinsRules.computeRound(holes: store.round.skinsHoles)
+                let unpaid = round.unpaidSkinsInPot
+                if unpaid == 0 {
+                    Text("No unpaid skins")
+                        .foregroundStyle(.secondary)
+                } else {
+                    let cents = unpaid * (store.round.stakeCents ?? 0)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Pushed to the pot: \(unpaid) skin\(unpaid == 1 ? "" : "s")")
+                            .font(.headline)
+                        Text("Unpaid balance: \(centsToDollars(cents))")
+                            .foregroundStyle(.secondary)
+                    }
+                    .accessibilityLabel("Pushed to the pot, \(unpaid) skins")
+                }
+            }
+
             Section("Holes") {
-                let computed = SkinsRules.compute(holes: store.round.skinsHoles)
+                let computed = SkinsRules.computeRound(holes: store.round.skinsHoles).holes
                 ForEach(computed) { c in
                     HStack(alignment: .firstTextBaseline) {
                         Text("Hole \(c.hole.number)")
