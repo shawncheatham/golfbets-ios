@@ -61,15 +61,15 @@ struct SetupView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .frame(maxWidth: .infinity)
-
-                NavigationLink("", destination: RoundHomeView(), isActive: $didStart)
-                    .hidden()
             }
         }
         .navigationTitle(game.shortLabel)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             EditButton()
+        }
+        .navigationDestination(isPresented: $didStart) {
+            RoundHomeView()
         }
         .onAppear {
             draft = Round.makeDefault(game: game)
